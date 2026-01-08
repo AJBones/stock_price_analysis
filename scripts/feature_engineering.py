@@ -35,11 +35,11 @@ for company in ftse100Cons:
             subset.loc[:, f"{feature}_rolling_mean_{window}"] = (
                 subset[feature].shift(1).rolling(window=window).mean()
             )
-    subset = data.dropna()
+    subset = subset.dropna()
     ftse100_lagged.append(subset)
 
 ftse100_proc = pd.concat(ftse100_lagged, ignore_index=True)
-ftse100_proc.to_csv("../data/processed/ftse100_historic_prices.csv")
+ftse100_proc.to_csv("../data/processed/ftse100_historic_prices.csv", index=False)
 
 ftse250_lagged = []
 for company in ftse250Cons:
@@ -53,8 +53,8 @@ for company in ftse250Cons:
             subset.loc[:, f"{feature}_rolling_mean_{window}"] = (
                 subset[feature].shift(1).rolling(window=window).mean()
             )
-    subset = data.dropna()
+    subset = subset.dropna()
     ftse250_lagged.append(subset)
 
 ftse250_proc = pd.concat(ftse250_lagged, ignore_index=True)
-ftse250_proc.to_csv("../data/processed/ftse250_historic_prices.csv")
+ftse250_proc.to_csv("../data/processed/ftse250_historic_prices.csv", index=False)
