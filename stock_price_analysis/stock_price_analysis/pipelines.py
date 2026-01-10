@@ -28,5 +28,7 @@ class DynamicCyclicalEncoder(BaseEstimator, TransformerMixin):
         X_out["month_sin"] = np.sin(2 * np.pi * dates.dt.month / 12)
         X_out["month_cos"] = np.cos(2 * np.pi * dates.dt.month / 12)
 
+        # TODO: Add encoding for day of week
+
         # Drop the original date column to keep it clean for sklearn
         return X_out.drop(columns=[self.date_column])
