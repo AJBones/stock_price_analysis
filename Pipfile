@@ -9,6 +9,7 @@ pandas = "*"
 yfinance = "*"
 jupyterlab = "*"
 scikit-learn = "*"
+statsmodels = "*"
 
 [dev-packages]
 
