@@ -26,7 +26,7 @@ def retrieve_data(input=pd.DataFrame, start_date=str, end_date=str, output=str):
 def main():
     parser = argparse.ArgumentParser(description="Stock price retriever script")
     parser.add_argument("-i", "--input")
-    parser.add_argument("-s", "--start", default="2025-01-01")
+    parser.add_argument("-s", "--start", default="2015-01-01")
     parser.add_argument("-e", "--end", default=date.today().strftime("%Y-%m-%d"))
     parser.add_argument("-o", "--output")
     args = parser.parse_args()
