@@ -1,7 +1,9 @@
 import argparse
+import datetime
+import os
+
 import pandas as pd
 import yfinance as yf
-from datetime import date
 
 
 def retrieve_data(input=pd.DataFrame, start_date=str, end_date=str, output=str):
@@ -23,11 +25,24 @@ def retrieve_data(input=pd.DataFrame, start_date=str, end_date=str, output=str):
     price_data.to_csv(output, index=False)
 
 
+def stage_data(input=pd.DataFrame, output=str):
+    """
+    Wrapper function that retrieves the data and saves to a timestamped dir in the
+    loading zone.
+    """
+    timestamp = datetime.today().strftime("%Y-%m-%d-%H-%M-%S")
+    if not os.path.isdir(timestamp):
+        os.mkdir(f"data/{timestamp}")
+    outpath = f'{timestamp}/{output}'
+    date = datetime.datetime.now(tz=datetime.timezone.utc).date().strftime("%Y-%m-%d")
+    retrieve_data(input, date, date, outpath)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Stock price retriever script")
     parser.add_argument("-i", "--input")
     parser.add_argument("-s", "--start", default="2015-01-01")
-    parser.add_argument("-e", "--end", default=date.today().strftime("%Y-%m-%d"))
+    parser.add_argument("-e", "--end", default=datetime.datetime.now(tz=datetime.timezone.utc).date())
     parser.add_argument("-o", "--output")
     args = parser.parse_args()
     # TODO: Get the below working without getting the 403 forbidden error. Spend some time on this. In the meantime, just
