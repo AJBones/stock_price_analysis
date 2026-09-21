@@ -1,0 +1,2 @@
+ftse100_historic_prices.csv filter=lfs diff=lfs merge=lfs -text
+ftse250_historic_prices.csv filter=lfs diff=lfs merge=lfs -text
