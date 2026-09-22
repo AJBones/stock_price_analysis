@@ -34,8 +34,9 @@ def stage_data(input=pd.DataFrame, output=str):
     if not os.path.isdir(timestamp):
         os.mkdir(f"data/{timestamp}")
     outpath = f'{timestamp}/{output}'
-    date = datetime.datetime.now(tz=datetime.timezone.utc).date().strftime("%Y-%m-%d")
-    retrieve_data(input, date, date, outpath)
+    start_date = datetime.datetime.now(tz=datetime.timezone.utc).date().strftime("%Y-%m-%d")
+    end_date = (datetime.datetime.now(tz=datetime.timezone.utc).date() + datetime.timedelta(1)).strftime("%Y-%m-%d")
+    retrieve_data(input, start_date, end_date, outpath)
 
 
 def main():
