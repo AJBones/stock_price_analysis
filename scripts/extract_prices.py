@@ -34,7 +34,7 @@ def retrieve_data(input_df=pd.DataFrame, start_date=str, end_date=str):
             data = response[["Open", "High", "Low", "Close", "Volume"]].copy()
             data.reset_index(inplace=True)
 
-            data["company_ticker"] = raw_ticker
+            data["company_ticker"] = yf_ticker
             data["company_name"] = row["Company"]
             data["sector"] = row.get("FTSE industry classification benchmark sector", "Unknown")
             data["exchange"] = "LSE"
