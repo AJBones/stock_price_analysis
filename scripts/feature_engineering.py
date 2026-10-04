@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 ftse100_path = "../data/raw/ftse_100_historic_prices.csv"
