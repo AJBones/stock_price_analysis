@@ -10,6 +10,7 @@ yfinance = "*"
 jupyterlab = "*"
 scikit-learn = "*"
 statsmodels = "*"
+pytest = "*"
 
 [dev-packages]
 
